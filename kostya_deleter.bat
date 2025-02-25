@@ -1,21 +1,70 @@
 @echo off
+
+set /p mode=use builder build? (y/n):
 set /p TARGET_PATH=enter mods folder path:
 
-set "FILE_PATTERN1=embeddium-0.3.31+mc1.20.1.jar"
-set "FILE_PATTERN2=embeddiumplus-1.20.1-v1.2.13.jar"
-set "FILE_PATTERN3=oculus-mc1.20.1-1.8.0_patched.jar"
-set "FILE_PATTERN4=sodiumdynamiclights-forge-1.0.10-1.20.1.jar"
-set "FILE_PATTERN5=sodiumoptionsapi-forge-1.0.10-1.20.1.jar"
+set "FILE_PATTERNSTRAIGHT1=embeddium-0.3.31+mc1.20.1.jar"
+set "FILE_PATTERNSTRAIGHT2=embeddiumplus-1.20.1-v1.2.13.jar"
+set "FILE_PATTERNSTRAIGHT3=oculus-mc1.20.1-1.8.0_patched.jar"
+set "FILE_PATTERNSTRAIGHT4=sodiumdynamiclights-forge-1.0.10-1.20.1.jar"
+set "FILE_PATTERNSTRAIGHT5=sodiumoptionsapi-forge-1.0.10-1.20.1.jar"
 
-if exist "%TARGET_PATH%\%FILE_PATTERN%" (
-    del /F /Q "%TARGET_PATH%\%FILE_PATTERN1%"
-    del /F /Q "%TARGET_PATH%\%FILE_PATTERN2%"
-    del /F /Q "%TARGET_PATH%\%FILE_PATTERN3%"
-    del /F /Q "%TARGET_PATH%\%FILE_PATTERN4%"
-    del /F /Q "%TARGET_PATH%\%FILE_PATTERN5%"
-    echo Fuck Kostya.
+set "FILE_PATTERNBUILD1=Forgematica-0.1.12-mc1.20.1.jar"
+set "FILE_PATTERNBUILD2=MaFgLib-0.1.13-mc1.20.1.jar"
+
+
+
+if /i "%mode%"=="y" (
+    echo Builder mode enabled.
+
+    if exist "%TARGET_PATH%\%FILE_PATTERNSTRAIGHT1%" (
+        ren "%TARGET_PATH%\%FILE_PATTERNSTRAIGHT1%" "%FILE_PATTERNSTRAIGHT1%.disabled"
+    )
+    if exist "%TARGET_PATH%\%FILE_PATTERNSTRAIGHT2%" (
+        ren "%TARGET_PATH%\%FILE_PATTERNSTRAIGHT2%" "%FILE_PATTERNSTRAIGHT2%.disabled"
+    )
+    if exist "%TARGET_PATH%\%FILE_PATTERNSTRAIGHT3%" (
+        ren "%TARGET_PATH%\%FILE_PATTERNSTRAIGHT3%" "%FILE_PATTERNSTRAIGHT3%.disabled"
+    )
+    if exist "%TARGET_PATH%\%FILE_PATTERNSTRAIGHT4%" (
+        ren "%TARGET_PATH%\%FILE_PATTERNSTRAIGHT4%" "%FILE_PATTERNSTRAIGHT4%.disabled"
+    )
+    if exist "%TARGET_PATH%\%FILE_PATTERNSTRAIGHT5%" (
+        ren "%TARGET_PATH%\%FILE_PATTERNSTRAIGHT5%" "%FILE_PATTERNSTRAIGHT5%.disabled"
+    )
+
+    if exist "%TARGET_PATH%\%FILE_PATTERNBUILD1%.disabled" (
+        ren "%TARGET_PATH%\%FILE_PATTERNBUILD1%.disabled" "%FILE_PATTERNBUILD1%"
+    )
+    if exist "%TARGET_PATH%\%FILE_PATTERNBUILD2%.disabled" (
+        ren "%TARGET_PATH%\%FILE_PATTERNBUILD2%.disabled" "%FILE_PATTERNBUILD2%"
+    )
 ) else (
-    echo Files not found.
+    echo Builder mode disabled.
+
+    if exist "%TARGET_PATH%\%FILE_PATTERNSTRAIGHT1%.disabled" (
+        ren "%TARGET_PATH%\%FILE_PATTERNSTRAIGHT1%.disabled" "%FILE_PATTERNSTRAIGHT1%"
+    )
+    if exist "%TARGET_PATH%\%FILE_PATTERNSTRAIGHT2%.disabled" (
+        ren "%TARGET_PATH%\%FILE_PATTERNSTRAIGHT2%.disabled" "%FILE_PATTERNSTRAIGHT2%"
+    )
+    if exist "%TARGET_PATH%\%FILE_PATTERNSTRAIGHT3%.disabled" (
+        ren "%TARGET_PATH%\%FILE_PATTERNSTRAIGHT3%.disabled" "%FILE_PATTERNSTRAIGHT3%"
+    )
+    if exist "%TARGET_PATH%\%FILE_PATTERNSTRAIGHT4%.disabled" (
+        ren "%TARGET_PATH%\%FILE_PATTERNSTRAIGHT4%.disabled" "%FILE_PATTERNSTRAIGHT4%"
+    )
+    if exist "%TARGET_PATH%\%FILE_PATTERNSTRAIGHT5%.disabled" (
+        ren "%TARGET_PATH%\%FILE_PATTERNSTRAIGHT5%.disabled" "%FILE_PATTERNSTRAIGHT5%"
+    )
+
+    if exist "%TARGET_PATH%\%FILE_PATTERNBUILD1%" (
+        ren "%TARGET_PATH%\%FILE_PATTERNBUILD1%" "%FILE_PATTERNBUILD1%.disabled"
+    )
+    if exist "%TARGET_PATH%\%FILE_PATTERNBUILD2%" (
+        ren "%TARGET_PATH%\%FILE_PATTERNBUILD2%" "%FILE_PATTERNBUILD2%.disabled"
+    )
 )
 
+echo Operation completed.
 pause
